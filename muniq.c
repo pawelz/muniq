@@ -40,7 +40,8 @@ int read_mid(char *fn, char *o) {
     }
 
     // End of headers, no Message ID found.
-    if (b[0] == '\n' || b[0] == 0) {
+    if (b[0] == '\r' || b[0] == '\n' || b[0] == 0) {
+      fclose(file);
       return 1;
     }
   } while(!ismid(b));
