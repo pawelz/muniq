@@ -21,6 +21,16 @@ Flags:
 * `--dryrun`: doesn't actually remove any files
 * `-h` or `--help`: prints a usage message and exits
 
+## Build
+
+D'oh!
+
+```sh
+$ gcc muniq.c -o muniq
+```
+
+This should build on any POSIX compliant system. Tested on MacOS and Raspbian.
+
 ## No robots
 
 No robots were harmed in making of this code. It was lovingly handcrafted by
