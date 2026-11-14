@@ -49,6 +49,7 @@ int read_mid(char *fn, char *o) {
 
   // strcpy is for those of weak mind
   int i;
+  // The magic number 12 is the length of the "Message-ID: " string.
   for (i = 0; i < 4095 - 12; i++) {
     if (b[i+12] == 0 || b[i+12] == '\n' || b[i+12] == '\r') {
       break;
