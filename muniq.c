@@ -148,6 +148,22 @@ int main(int argc, char **argv) {
       fprintf(stderr, "Skipping file %s, failed to read the Message-ID header.\n", de->d_name);
       continue;
     }
+    // The purpose of this check is to prevent the deduplication of all
+    // messages, for which we really fail to read the message ID. Consider for
+    // example multiline header like this:
+    //
+    // Message-ID:
+    //     <xyz1234567890>
+    //
+    // All message IDs like that will map to an empty string and so muniq would
+    // deduplicate them leading to data loss.
+    //
+    // The misread message IDs issue aside, short message IDs exponentially
+    // increase the risk of ID collisions.
+    if (strlen(mid) < 10) {
+      fprintf(stderr, "Skipping file %s, the Message-ID has fewer than 10 characters.\n", de->d_name);
+      continue;
+    }
 
     c->fn = strdup(de->d_name);
     c->mid = strdup(mid);
