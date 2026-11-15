@@ -31,6 +31,15 @@ $ gcc muniq.c -o muniq
 
 This should build on any POSIX compliant system. Tested on MacOS and Raspbian.
 
+You could also use provided bazel config:
+
+```sh
+$ bazel build :muniq
+```
+
+however this is an overkill for most applications. The bazel config is provided
+so that this code can be easily reused in other bazel projects.
+
 ## No robots
 
 No robots were harmed in making of this code. It was lovingly handcrafted by
