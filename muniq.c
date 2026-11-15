@@ -62,6 +62,10 @@ int read_mid(char *fn, char *o) {
 }
 
 // Sorts the linked list of messages by Message-ID.
+//
+// This runs a dumb insertion sort algorith, which is N^2. I could use qsort if
+// this gets slow, but for the order of thousands emails, this is just good
+// enough.
 struct msg *sort(struct msg *msgs) {
   struct msg *sorted = malloc(sizeof(struct msg));
   struct msg *c;
